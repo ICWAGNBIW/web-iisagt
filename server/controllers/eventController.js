@@ -9,13 +9,13 @@ class EventController {
   async create(req, res) {
                                                                         //, tag1, tag2, tag3, tag4, tag5, tag6, tag7, tag8 
     try {
-      const { firstName, lastName, patronymic, email, nameEvent, places, auditorium, description} = req.body
+      const {nameEvent, places, auditorium, description} = req.body
       const { photo } = req.files
       let fileName = uuid.v4() + ".jpg"
       photo.mv(path.resolve(__dirname, '..', 'static', fileName))
       
                                                                                             //, tag1, tag2, tag3, tag4, tag5, tag6, tag7, tag8 
-      const event = await Event.create({ firstName, lastName, patronymic, email, nameEvent, places, auditorium, description, photo: fileName})
+      const event = await Event.create({nameEvent, places, auditorium, description, photo: fileName})
 
       return res.json(event)
 
@@ -76,7 +76,7 @@ class EventController {
    // let events = await Event.findAll()
    let {event} = req.query
     if(!event) {
-        return next(ApiError.badRequest("Мероприятие не задано"))
+        return next(ApiError.badRequest("Мероприятие не выбрано"))
     }
     return res.json(event)
   }

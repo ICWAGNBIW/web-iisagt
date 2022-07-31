@@ -25,7 +25,7 @@ app.get('/', (req, res) => {
 const start = async () => {
     try {
         await sequelize.authenticate()
-        await sequelize.sync()
+        await sequelize.sync({alter: true})
         app.listen(PORT, () => console.log(`Server started on port ${PORT}`))
     }catch (e) {
         console.log(e)

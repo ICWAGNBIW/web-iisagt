@@ -1,7 +1,9 @@
 const Router = require('express')
 const router = new Router()
-const eventRouter = require('./eventRouter') // импортируем роутер для его использования
+const eventRouter = require('./eventRouter')
+const userRouter = require('./usersRouter')
 
-router.use('/event', eventRouter) // указываем что будет обрабатываться в этом роутере 
+router.use('/event', eventRouter) 
+router.use('/user', userRouter)
 
 module.exports = router
