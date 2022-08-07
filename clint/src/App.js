@@ -1,34 +1,30 @@
-//import logo from './logo.svg';
-//import './App.css';
-import {Routes, Route} from 'react-router-dom';
-import {useContext} from 'react';
-import {Context} from './index';
-
+import React from "react";
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { Routes, Route } from 'react-router-dom';
+import Layout from './components/Layout.js';
+import Home from './pages/Homepage.js'
+import Events from './pages/Events.js';
+import EventPage from './pages/EventPage.js';
+import NotFound from './pages/NotFound';
+import Director from './pages/Director';
+import Header from './components/Layout.js';
+import Footer from './components/Footer.js';
+import Prik_Inf from './pages/Prikladnaya_inf.js';
 function App() {
-  //let isAuth = true;
-  const {user} = useContext(Context);
-  console.log(user);
-  return (
-    <div className="App">
-     <Routes>
-      <Route path="/hey" element={<Hey/>}/>
-     {user.isAuth && <Route path="/adminhey" element={<AdminHey/>}/>}
-      </Routes>
-    </div>
+    return (
+      <div className="App">
+            <Header />
+          <Routes>
+          <Route index element={<Home/>}/>
+          <Route path='events' element={<Events/>}/>
+          <Route path='events/event/:id' element={<EventPage />} />
+          <Route path='dir' element={<Director />} />
+          <Route path='prik_inf' element={<Prik_Inf/>} />
+          <Route path='*' element={<NotFound/>}/>
+          </Routes>
+          <Footer/>
+            </div>
   );
-}
-
-function Hey () {
-  return (
-    <div>HEY!!!!</div>
-  )
-}
-
-
-function AdminHey () {
-  return (
-    <div>HEY BUT FOR ADMIN C:</div>
-  )
 }
 
 export default App;
