@@ -7,16 +7,55 @@ import img1 from '../components/data/k1.jpg';
 import img2 from '../components/data/k4.jpg';
 import img3 from '../components/data/k2.jpg';
 function Events () {
-    const {user} = useContext(Context);
-    console.log(user);
+    //const {user} = useContext(Context);
+    //console.log(user);
     const [data, setData] = useState([]);
+
     const getData = async () => {
     const events = await getEvents();
-    console.log(events);  }
+    let eventCards = [];
+    for (let e in events) {
+        console.log(events[e]);
+        let event_photo = "http://localhost:5000/" + events[e].photo;
+        let event = <EventCard title={events[e].nameEvent} desc={events[e].description} aud={events[e].auditorium} photo={event_photo}/>
+        eventCards.push(event);
+    } 
+    setData(eventCards);}
 
     useEffect(() => {
         getData();
     }, [])
+
+   // useEffect(() => {
+        for (let d in data) {
+
+        }
+        //console.log(data);
+    //}, [data])
+
+    const EventCard = (props) => {
+
+        return (
+          <Card className="col-4 card2">
+                                <Card.Img variant="top"
+                                    src={props.photo} />
+                                <Card.Body>
+                                    <Card.Title>{props.title}</Card.Title>
+                                    <Card.Text>{props.desc}</Card.Text>
+                                    <button type="button" class="btn btn-primary mt-2">{props.aud}</button>
+                                    <button type="button" class="btn btn-warning mt-2" id="B">Университетская жизнь</button>
+                                    <button type="button" class="btn btn-secondary mt-2">Образование</button>
+                                    <button type="button" class="btn btn-info mt-2">Спорт</button>
+                                    <p class="data_time">20:00 <br/> 10.05.2022</p>
+                                    
+                                </Card.Body>
+                                <div class="card-footer d-grid gap-2 d-flex justify-content-center">
+                                    <button class="calendar__button calendar__button--primary event-btn">
+                                        Записаться</button>
+                                </div>
+                            </Card>  
+        )
+    }
     
         return (
             <>
@@ -49,6 +88,7 @@ function Events () {
 
                     <Container className="col-10 " id="row-cont2">
                         <Container className="row cards-cont1">
+                            {data}
                             <Card className="col-4 card2">
                                 <Card.Img variant="top"
                                     src={img1} />

@@ -6,7 +6,7 @@ const ApiError = require("../error/ApiError")
 
 // создаем обработчики для роутеров
 class EventController {
-  async create(req, res) {
+  async create(req, res, next) {
                                                                         //, tag1, tag2, tag3, tag4, tag5, tag6, tag7, tag8 
     try {
       const {nameEvent, places, auditorium, description} = req.body
@@ -21,7 +21,7 @@ class EventController {
 
 
     } catch(e) {
-    next(ApiError.badRequest(e.message))
+      return next(ApiError.badRequest(e.message))
     }
   }
 
