@@ -1,6 +1,28 @@
 const sequelize = require('../db')
 const {DataTypes} = require('sequelize')
 
+  //////////////////////////////////////////////////
+  //-- SERVETABLES --//
+
+  const Building = sequelize.define('building',{
+    id: {type: DataTypes.INTEGER, primaryKey: true},
+    adress: {type: DataTypes.STRING, allowNull: false},
+    })
+
+  const Auditorium = sequelize.define('auditorium', {
+    id: {type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true},
+    auditorium_number: {type: DataTypes.STRING, allowNull: false},
+    floor: {type: DataTypes.INTEGER},
+    building: {type: DataTypes.INTEGER, allowNull: false, references: {model: Building, key: 'id'}} 
+  })
+
+const Courses = sequelize.define('courses',{
+      id: {type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true},
+      title: {type: DataTypes.STRING, allowNull: false, unique: true}
+    })
+
+
+
 ////////////////////////////////////////////////
 //-- COMMON --//
 
@@ -37,10 +59,10 @@ const Events = sequelize.define('events', {
     name: {type: DataTypes.STRING, allowNull: false},
     patronymic: {type: DataTypes.STRING, allowNull: false},
     surname: {type: DataTypes.STRING, allowNull: false},
-    position: {type: DataTypes.STRING, allowNull: false}, //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    position: {type: DataTypes.STRING, allowNull: false}, 
     qualification: {type: DataTypes.STRING, allowNull: false},
-    academicDegree: {type: DataTypes.STRING}, //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! 
-    academicTitle: {type: DataTypes.STRING}, //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    academicDegree: {type: DataTypes.STRING}, 
+    academicTitle: {type: DataTypes.STRING}, 
     profExpirience: {type: DataTypes.INTEGER},  
     email: {type: DataTypes.STRING},
     phone: {type: DataTypes.STRING},
@@ -84,21 +106,35 @@ const Events = sequelize.define('events', {
 /////////////////////////////////////////////////////
 
 //-- TIMETABLE --//
-{/*const Timetable = sequelize.define('timetable', {
+
+const Class_number = sequelize.define('class_name',{
+  id: {type: DataTypes.INTEGER, primaryKey: true},
+  start_time: {type: DataTypes.DATEONLY, allowNull: false}, 
+  end_time: {type: DataTypes.DATEONLY, allowNull: false}, 
+})
+
+const Groups = sequelize.define('groups', {
+  id: {type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true},
+  group_number: {type: DataTypes.STRING, allowNull: false}, 
+  department: {type: DataTypes.INTEGER, allowNull: false, references: {model: Department, key: 'id'}},
+  specialty: {type: DataTypes.INTEGER, allowNull: false, references: {model: Specialty, key: 'id'}},
+  level: {type: DataTypes.STRING, allowNull: false},
+  ed_year: {type: DataTypes.INTEGER, allowNull: false}, 
+})
+
+const Timetable = sequelize.define('timetable', {
     id: {type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true},
     start_date: {type: DataTypes.DATEONLY, allowNull: false},
     end_date: {type: DataTypes.DATEONLY, allowNull: false}, 
-    class_number: {type: DataTypes.INTEGER, allowNull: false, references: {model: Class_number, key: 'id'}}
+    class_number: {type: DataTypes.INTEGER, allowNull: false, references: {model: Class_number, key: 'id'}},
     group: {type: DataTypes.INTEGER, allowNull: false, references: {model: Groups, key: 'id'}},
     class_type: {type: DataTypes.ENUM('лекция', 'практика', 'лабораторная работа'), allowNull: false},
     course: {type: DataTypes.INTEGER, allowNull: false, references: {model: Courses, key: 'id'}},
-    lecturer int [ref: > stuff.id]
-    auditorium int [ref: > auditorium.id]
-    subgroup int 
-    week int  
-  })*/}
-
-
+    lecturer: {type: DataTypes.INTEGER, allowNull: false, references: {model: Stuff, key: 'id'}},
+    auditorium: {type: DataTypes.INTEGER, allowNull: false, references: {model: Auditorium, key: 'id'}},
+    subgroup: {type: DataTypes.INTEGER}, 
+    week: {type: DataTypes.STRING, allowNull: false}, 
+  })
 
   //////////////////////////////////////////////////
   //-- MANY TO MANY --//
@@ -109,8 +145,47 @@ const Events = sequelize.define('events', {
   })
 
 
+  const News_tags = sequelize.define('news_tags', {
+    id: {type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true},
+    news: {type: DataTypes.INTEGER, allowNull: false, references: {model: News, key: 'id'}},
+    tag: {type: DataTypes.INTEGER, allowNull: false, references: {model: Tags, key: 'id'}}
+  })
+
+  const Dep_stuff = sequelize.define('dep_stuff', {
+    id: {type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true},
+    dep: {type: DataTypes.INTEGER, allowNull: false, references: {model: Department, key: 'id'}},
+    employee: {type: DataTypes.INTEGER, allowNull: false, references: {model: Stuff, key: 'id'}}
+  })
+
+  const Dep_specilaty = sequelize.define('dep_specilaty', {
+    id: {type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true},
+    dep: {type: DataTypes.INTEGER, allowNull: false, references: {model: Department, key: 'id'}},
+    spec: {type: DataTypes.INTEGER, allowNull: false, references: {model: Specialty, key: 'id'}}
+  })
+
+  const Spec_courses = sequelize.define('spec_courses', {
+    id: {type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true},
+    spec: {type: DataTypes.INTEGER, allowNull: false, references: {model: Specialty, key: 'id'}},
+    course: {type: DataTypes.INTEGER, allowNull: false, references: {model: Courses, key: 'id'}}
+  })
 
 module.exports = {
-    Event,
-    User
+    Events,
+    News,
+    Tags,
+    Stuff,
+    Specialty,
+    Department,
+    ScienceLabs,
+    Timetable,
+    Class_number,
+    Groups,
+    Auditorium,
+    Building,
+    Courses,
+    Events_tags,
+    News_tags,
+    Dep_specilaty,
+    Dep_stuff,
+    Spec_courses
   }
