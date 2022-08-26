@@ -1,3 +1,4 @@
+
 import React from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Routes, Route } from 'react-router-dom';
@@ -10,21 +11,23 @@ import Director from './pages/Director';
 import Header from './components/Layout.js';
 import Footer from './components/Footer.js';
 import Prik_Inf from './pages/Prikladnaya_inf.js';
+import Napravlenie from './pages/Napravlenie';
 function App() {
     return (
-      <div className="App">
+        <div className="App">
             <Header />
-          <Routes>
-          <Route index element={<Home/>}/>
-          <Route path='events' element={<Events/>}/>
-          <Route path='events/event/:id' element={<EventPage />} />
-          <Route path='dir' element={<Director />} />
-          <Route path='prik_inf' element={<Prik_Inf/>} />
-          <Route path='*' element={<NotFound/>}/>
-          </Routes>
-          <Footer/>
-            </div>
-  );
+            <Routes>
+                <Route index element={<Home />} />
+                <Route path='events' element={<Events />} />
+                <Route path='events/event/:id' element={<EventPage />} />
+                <Route path='dir' element={<Director />} />
+                <Route path='prik_inf' element={<Prik_Inf />} />
+                <Route path='napr' element={<Napravlenie />} />
+                <Route path='*' element={<NotFound />} />
+            </Routes>
+            <Footer />
+        </div>
+    );
 }
 
 export default App;
