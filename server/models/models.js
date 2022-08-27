@@ -128,7 +128,7 @@ const Timetable = sequelize.define('timetable', {
     end_date: {type: DataTypes.DATEONLY, allowNull: false}, 
     class_number: {type: DataTypes.INTEGER, allowNull: false, references: {model: Class_number, key: 'id'}},
     group: {type: DataTypes.INTEGER, allowNull: false, references: {model: Groups, key: 'id'}},
-    class_type: {type: DataTypes.ENUM('лекция', 'практика', 'лабораторная работа'), allowNull: false},
+    class_type: {type: DataTypes.STRING, allowNull: false},
     course: {type: DataTypes.INTEGER, allowNull: false, references: {model: Courses, key: 'id'}},
     lecturer: {type: DataTypes.INTEGER, allowNull: false, references: {model: Stuff, key: 'id'}},
     auditorium: {type: DataTypes.INTEGER, allowNull: false, references: {model: Auditorium, key: 'id'}},
