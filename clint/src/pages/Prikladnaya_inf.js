@@ -6,43 +6,45 @@ export default class Prik_Inf extends Component {
     render() {
         return (
             <>
-                <Row className="mx-5 mt-5" style={{ justifyContent: 'unset'}} id="body_for_pr_inf">
+                <Row className="mx-5 mt-5" style={{ justifyContent: 'unset' }} id="body_for_pr_inf">
                     <Col className="col-3 width_for_pr_inf">
                         <h4 className="mb-3">Кафедры</h4>
                         <Card>
-                            <div class="card-header feat">
-                                Прикладной информатики
-                </div>
+                            <div className="card-header feat">
+                                <a href="/prik_inf" className="links_for_panel">
+                                    Прикладной информатики
+                                </a>
+                            </div>
                             <ul className="list-group list-group-flush">
-                            <li className="list-group-item list">Высшей математики и теоретической механики</li>
-                            <li className="list-group-item list">Информационных технологий и систем безопасности</li>
-                            <li className="list-group-item list">Морских информационных систем</li>
-                            <li className="list-group-item list">Физики</li>
-                        </ul>
-                    </Card>
+                                <li className="list-group-item list" >Высшей математики и теоретической механики</li>
+                                <li className="list-group-item list">Информационных технологий и систем безопасности</li>
+                                <li className="list-group-item list">Морских информационных систем</li>
+                                <li className="list-group-item list">Физики</li>
+                            </ul>
+                        </Card>
                     </Col>
                     <Col className="col-8 ms-5 width_for_pr_inf">
                         <Container>
                             <h4>Кафедра прикладной информатики</h4>
                             <hr />
-                            <p className="text-post1 ">Кафедра прикладной информатики создана с целью подготовки обучающихся lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptas minus odio pariatur, 
-                            deleniti quam eveniet architecto nisi quo a quod soluta provident dolorem eius ab eos ad error minima corrupti esse aliquam 
-                            modi voluptatum. Molestias, fugit eum modi, doloremque cumque architecto delectus, nemo sapiente aliquid totam voluptatem laborum 
-                            inventore veniam itaque enim consequuntur non repudiandae. Eaque quia nemo, nihil praesentium amet aperiam ab, debitis magni exercitationem quos 
-                            saepe ullam explicabo eveniet sed sapiente facilis vero corrupti suscipit optio dolore sit animi, odio quod! Explicabo nobis perferendis tempore temporibus repudiandae,
+                            <p className="text-post1 ">Кафедра прикладной информатики создана с целью подготовки обучающихся lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptas minus odio pariatur,
+                                deleniti quam eveniet architecto nisi quo a quod soluta provident dolorem eius ab eos ad error minima corrupti esse aliquam
+                                modi voluptatum. Molestias, fugit eum modi, doloremque cumque architecto delectus, nemo sapiente aliquid totam voluptatem laborum
+                                inventore veniam itaque enim consequuntur non repudiandae. Eaque quia nemo, nihil praesentium amet aperiam ab, debitis magni exercitationem quos
+                                saepe ullam explicabo eveniet sed sapiente facilis vero corrupti suscipit optio dolore sit animi, odio quod! Explicabo nobis perferendis tempore temporibus repudiandae,
                                 suscipit aut sit illo, adipisci, perspiciatis molestiae saepe reiciendis cum quo.</p>
                             <hr />
                         </Container>
                         <Container style={{ padding: "0px" }}> <Card className="card3" style={{ margin: "10px 0px", padding: "0px" }}>
-                            <Col className="col-md-5 mb-md-0 p-md-4 logo_for_media_pr"><img src={Isigt} style={{ width: "80%"}} /> </Col>
+                            <Col className="col-md-5 mb-md-0 p-md-4 logo_for_media_pr"><img src={Isigt} style={{ width: "80%" }} /> </Col>
                             <Col className="text-post1 col-md-7 p-4 ps-md-0" id="text_pr_inf">
-                             <Card.Body className="dir">
+                                <Card.Body className="dir">
                                     <h5>Заведующий кафедрой - Истомин Е.П.</h5>
-                                    <p className="text-post1 ">Профессор, доктор технических наук. Направления работы: применение ЭВМ и автоматизация управления силами флота; 
-                                    Государственное муниципальное управление Cras sit amet nibh libero, in gravida nulla. Nulla vel 
-                                    metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce
+                                    <p className="text-post1 ">Профессор, доктор технических наук. Направления работы: применение ЭВМ и автоматизация управления силами флота;
+                                        Государственное муниципальное управление Cras sit amet nibh libero, in gravida nulla. Nulla vel
+                                        metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce
                                         condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.</p>
-                            </Card.Body>
+                                </Card.Body>
                             </Col>
                         </Card>
                             <hr />
@@ -151,13 +153,13 @@ export default class Prik_Inf extends Component {
                         <Container>
                             <h5>Направления подготовки</h5>
                             <ul class="list-group list-group-flush">
-                                <li class="list-group-item list">09.03.03	Прикладная информатика	Прикладные информационные системы и технологии</li>
-                                <li class="list-group-item list">38.03.05	Бизнес-информатика	Бизнес-информатика</li>
+                                <li class="list-group-item list"> <a href="/napr" className="links_for_panel">09.03.03	Прикладная информатика	Прикладные информационные системы и технологии</a></li>
+                                <li class="list-group-item list">38.03.05	Бизнес-информатика	Бизнес-аналитика</li>
                             </ul>
-                            </Container>
+                        </Container>
                         <hr />
-                        
-                        </Col>
+
+                    </Col>
 
                 </Row>
 
