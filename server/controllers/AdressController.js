@@ -55,7 +55,7 @@ class AdressController {
   async getAllAuditoriums(req, res) {
     let auditoriums;
     auditoriums = await Auditorium.findAll()
-    return res.json(auditorium)
+    return res.json(auditoriums)
   }
 
 

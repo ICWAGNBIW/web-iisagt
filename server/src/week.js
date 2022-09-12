@@ -49,6 +49,6 @@ function checkWeekType(a) { // December 17, 1995 00:00:00 GMT+0300 - прини�
 const first_data = 'January 31, 2022 00:00:00'
 checkWeekType(first_data)
 
-export default checkWeekType;
+//export default checkWeekType;
 
 

@@ -2,6 +2,7 @@
   "name": "clint",
   "version": "0.1.0",
   "private": true,
+  "proxy": "http://localhost:5000",
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^13.3.0",
@@ -11,7 +12,9 @@
     "bootstrap5": "^1.1.9",
     "mobx": "^6.6.1",
     "mobx-react-lite": "^3.4.0",
+    "ra-data-simple-rest": "^4.3.1",
     "react": "^18.2.0",
+    "react-admin": "^4.3.0",
     "react-bootstrap": "^2.4.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.3.0",
